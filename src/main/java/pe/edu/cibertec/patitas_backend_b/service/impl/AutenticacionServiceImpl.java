@@ -34,19 +34,20 @@ public class AutenticacionServiceImpl implements AutenticacionService {
 
             String linea;
             while ((linea = br.readLine()) != null) {
-
                 String[] datos = linea.split(";");
-                if (loginRequestDTO.tipoDocumento().equals(datos[0]) &&
-                    loginRequestDTO.numeroDocumento().equals(datos[1]) &&
-                    loginRequestDTO.password().equals(datos[2])) {
+                if(     loginRequestDTO.tipoDocumento().equals(datos[0]) &&
+                        loginRequestDTO.numeroDocumento().equals(datos[1]) &&
+                        loginRequestDTO.password().equals(datos[2])){
 
-                    datosUsuario = new String[2];
-                    datosUsuario[0] = datos[3]; // Recuperar nombre
-                    datosUsuario[1] = datos[4]; // Recuperar email
+                    datosUsuario = new String[4];
 
+                    datosUsuario[0] = datos[0]; //recupera el tipodeDocumento
+                    datosUsuario[1] = datos[1];//recupera el numerodeDocumento
+                    datosUsuario[2] = datos[3];//recupera nombre
+                    datosUsuario[3] = datos[4];//recupera el email
                 }
-
             }
+
 
         } catch (IOException e) {
             datosUsuario = null;
